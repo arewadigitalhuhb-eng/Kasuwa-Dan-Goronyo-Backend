@@ -1,13 +1,14 @@
 const express = require('express');
 const cors = require('cors');
-
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const customerRoutes = require('./routes/customerRoutes');
 const saleRoutes = require('./routes/saleRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
-const adminRoutes = require('./routes/adminRoutes');
+const merchantRoutes = require('./routes/merchantRoutes');
+const merchantPortalRoutes = require('./routes/merchantPortalRoutes');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
+const { requestLogger } = require('./middleware/requestLogger');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(
 
 app.use(express.json({ limit: '2mb' }));
 app.use(express.urlencoded({ extended: true }));
+app.use(requestLogger);
 
 app.get('/api/health', (req, res) => {
   res.status(200).json({
@@ -44,7 +46,8 @@ app.use('/api/products', productRoutes);
 app.use('/api/customers', customerRoutes);
 app.use('/api/sales', saleRoutes);
 app.use('/api/payments', paymentRoutes);
-app.use('/api/admin', adminRoutes);
+app.use('/api/admin', merchantRoutes);
+app.use('/api/merchant', merchantPortalRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

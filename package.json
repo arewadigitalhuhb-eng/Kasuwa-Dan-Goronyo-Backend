@@ -1,0 +1,34 @@
+{
+  "name": "kasuwa-dan-goronyo-backend",
+  "version": "1.0.0",
+  "description": "Production backend API for Kasuwa Dan Goronyo POS system with subscriptions and payments",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "lint": "node --check server.js && node --check src/**/*.js"
+  },
+  "keywords": [
+    "pos",
+    "inventory",
+    "sales",
+    "payments",
+    "africa",
+    "mongodb",
+    "express"
+  ],
+  "author": "Arewa Digital Hub Engineering",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.16"
+  }
+}
